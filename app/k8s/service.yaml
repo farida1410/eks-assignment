@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: eks-assignment-service
+  namespace: eks-assignment
+  labels:
+    app: eks-assignment
+spec:
+  type: ClusterIP
+  selector:
+    app: eks-assignment
+  ports:
+  - name: http
+    port: 80
+    targetPort: 3000
+    protocol: TCP
+  sessionAffinity: None

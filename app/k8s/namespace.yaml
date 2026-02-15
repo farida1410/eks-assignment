@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: eks-assignment
+  labels:
+    name: eks-assignment
+    environment: dev
