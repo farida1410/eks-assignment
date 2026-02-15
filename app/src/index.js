@@ -25,7 +25,7 @@ app.get('/ready', (req, res) => {
 // Main endpoint
 app.get('/', (req, res) => {
   res.json({
-    message: 'Hello from EKS Assignment! CI/CD is working!',
+    message: 'Hello  from EKS Assignment! CI/CD is working!',
     version: '1.1.0',
     environment: process.env.NODE_ENV || 'development',
     hostname: require('os').hostname(),
