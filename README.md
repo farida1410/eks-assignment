@@ -1,6 +1,6 @@
 # EKS Deployment Assignment
 
-Production-ready deployment of a Node.js application on Amazon EKS with Terraform, CI/CD, and observability.
+Production-ready deployment of a Node.js application on Amazon EKS with Terraform, CI/CD, and observability. 
 
 ## Architecture
 
