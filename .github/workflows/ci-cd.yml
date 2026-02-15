@@ -12,6 +12,7 @@ on:
       - main
     paths:
       - 'app/**'
+  workflow_dispatch:
 
 env:
   AWS_REGION: us-east-1
@@ -136,8 +137,17 @@ jobs:
           kubectl cluster-info
           kubectl get nodes
 
+      - name: Get AWS Account ID
+        id: aws-account
+        run: |
+          AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
+          echo "account_id=$AWS_ACCOUNT_ID" >> $GITHUB_OUTPUT
+
       - name: Deploy to Kubernetes
         run: |
+          # Replace ACCOUNT_ID placeholder in deployment manifest
+          sed -i "s/ACCOUNT_ID/${{ steps.aws-account.outputs.account_id }}/g" app/k8s/deployment.yaml
+
           # Apply namespace (idempotent)
           kubectl apply -f app/k8s/namespace.yaml
 
